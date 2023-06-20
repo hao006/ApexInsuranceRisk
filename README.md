@@ -6,10 +6,11 @@ This is an application that calculates the risk profile of a user based on their
 
 1. Clone the repository to your local machine.
 2. Make sure you have Node.js and npm installed.
-3. Install the dependencies by running the following command in the project's root directory:
+3. Install the dependencies by running the following command in the project's root directory: npm install
 4. Build the TypeScript code by running: npx tsc
 5. Start the application by running: npm start
 6. Swagger page will be in http://localhost:3000/api-docs/
+7. Press Ctrl C to terminal batch job.
 The application will start on http://localhost:3000 by default.
 
 ## Main Technical Decisions
