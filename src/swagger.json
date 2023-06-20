@@ -1,0 +1,102 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Risk API",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/calculate-risk": {
+      "post": {
+        "summary": "Calculate risk profile",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/RiskProfile"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "User": {
+      "type": "object",
+      "properties": {
+        "age": {
+          "type": "number",
+          "minimum": 0
+        },
+        "dependents": {
+          "type": "number",
+          "minimum": 0
+        },
+        "house": {
+          "type": "object",
+          "properties": {
+            "ownership_status": {
+              "type": "string",
+              "enum": ["owned", "mortgaged"]
+            }
+          }
+        },
+        "income": {
+          "type": "number",
+          "minimum": 0
+        },
+        "marital_status": {
+          "type": "string",
+          "enum": ["single", "married"]
+        },
+        "risk_questions": {
+          "type": "array",
+          "items": {
+            "type": "number",
+            "enum": [0, 1]
+          },
+          "minItems": 3,
+          "maxItems": 3
+        },
+        "vehicle": {
+          "type": "object",
+          "properties": {
+            "year": {
+              "type": "number"
+            }
+          }
+        }
+      }
+    },
+    "RiskProfile": {
+      "type": "object",
+      "properties": {
+        "auto": {
+          "type": "string",
+          "enum": ["economic", "regular", "responsible", "ineligible"]
+        },
+        "disability": {
+          "type": "string",
+          "enum": ["economic", "regular", "responsible", "ineligible"]
+        },
+        "home": {
+          "type": "string",
+          "enum": ["economic", "regular", "responsible", "ineligible"]
+        },
+        "life": {
+          "type": "string",
+          "enum": ["economic", "regular", "responsible", "ineligible"]
+        }
+      }
+    }
+  }
+}
